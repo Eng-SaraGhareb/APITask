@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-08-28T16:43:53 EET" name="Suite" finished-at="2025-08-28T16:44:02 EET" duration-ms="8352">
+    <groups>
+    </groups>
+    <test started-at="2025-08-28T16:43:53 EET" name="Regression" finished-at="2025-08-28T16:44:02 EET" duration-ms="8352">
+      <class name="com.example.Post">
+        <test-method signature="PostBook_MissingFields()[pri:0, instance:com.example.Post@8f4ea7c]" started-at="2025-08-28T16:44:01 EET" name="PostBook_MissingFields" finished-at="2025-08-28T16:44:01 EET" duration-ms="272" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PostBook_MissingFields -->
+        <test-method signature="PostBook_Valid()[pri:0, instance:com.example.Post@8f4ea7c]" started-at="2025-08-28T16:44:01 EET" name="PostBook_Valid" finished-at="2025-08-28T16:44:01 EET" duration-ms="284" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PostBook_Valid -->
+      </class> <!-- com.example.Post -->
+      <class name="com.example.Put">
+        <test-method signature="PutBook_MissingFields()[pri:0, instance:com.example.Put@436813f3]" started-at="2025-08-28T16:44:01 EET" name="PutBook_MissingFields" finished-at="2025-08-28T16:44:02 EET" duration-ms="260" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PutBook_MissingFields -->
+        <test-method signature="PutBook_Valid()[pri:0, instance:com.example.Put@436813f3]" started-at="2025-08-28T16:44:02 EET" name="PutBook_Valid" finished-at="2025-08-28T16:44:02 EET" duration-ms="242" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- PutBook_Valid -->
+      </class> <!-- com.example.Put -->
+      <class name="com.example.GetId">
+        <test-method signature="GetBookById_InvalidIdFormat()[pri:0, instance:com.example.GetId@223d2c72]" started-at="2025-08-28T16:43:59 EET" name="GetBookById_InvalidIdFormat" finished-at="2025-08-28T16:44:00 EET" duration-ms="595" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetBookById_InvalidIdFormat -->
+        <test-method signature="GetBookById_NonExistentId()[pri:0, instance:com.example.GetId@223d2c72]" started-at="2025-08-28T16:44:00 EET" name="GetBookById_NonExistentId" finished-at="2025-08-28T16:44:00 EET" duration-ms="472" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetBookById_NonExistentId -->
+        <test-method signature="GetBookById_Valid()[pri:0, instance:com.example.GetId@223d2c72]" started-at="2025-08-28T16:44:00 EET" name="GetBookById_Valid" finished-at="2025-08-28T16:44:01 EET" duration-ms="385" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetBookById_Valid -->
+      </class> <!-- com.example.GetId -->
+      <class name="com.example.Delete">
+        <test-method signature="DeleteBook_InvalidIdFormat()[pri:0, instance:com.example.Delete@7e07db1f]" started-at="2025-08-28T16:43:53 EET" name="DeleteBook_InvalidIdFormat" finished-at="2025-08-28T16:43:56 EET" duration-ms="2180" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DeleteBook_InvalidIdFormat -->
+        <test-method signature="DeleteBook_ValidId()[pri:0, instance:com.example.Delete@7e07db1f]" started-at="2025-08-28T16:43:56 EET" name="DeleteBook_ValidId" finished-at="2025-08-28T16:43:56 EET" duration-ms="637" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DeleteBook_ValidId -->
+      </class> <!-- com.example.Delete -->
+      <class name="com.example.Get">
+        <test-method signature="GetBooks_InvalidEndpoint()[pri:0, instance:com.example.Get@36902638]" started-at="2025-08-28T16:43:56 EET" name="GetBooks_InvalidEndpoint" finished-at="2025-08-28T16:43:57 EET" duration-ms="273" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetBooks_InvalidEndpoint -->
+        <test-method signature="GetBooks_Valid()[pri:0, instance:com.example.Get@36902638]" started-at="2025-08-28T16:43:57 EET" name="GetBooks_Valid" finished-at="2025-08-28T16:43:59 EET" duration-ms="2701" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GetBooks_Valid -->
+      </class> <!-- com.example.Get -->
+    </test> <!-- Regression -->
+  </suite> <!-- Suite -->
+</testng-results>
