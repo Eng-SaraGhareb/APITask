@@ -1,21 +1,5 @@
-:root {
-    --primary-color: #027368;
-    --secondary-color: #8C8887;
-    --background-color: whitesmoke;
-    --panel-background-color: #CCD0D1;
-    --text-color: black;
-    --header-text-color: white;
-    --link-color: black;
-    --link-hover-color: black;
-    --border-passed-color: #038C73;
-    --border-failed-color: #F20505;
-    --border-skipped-color: #F2BE22;
-    --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-family-monospace: 'Lucida Grande';
-}
-
 body {
-    background-color: var(--background-color);
+    background-color: whitesmoke;
     margin: 0 0 5px 5px;
 }
 ul {
@@ -23,22 +7,23 @@ ul {
      margin-left:-10px;
 }
  li {
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      padding:5px 5px;
  }
  a {
      text-decoration: none;
-     color: var(--link-color);
+     color: black;
      font-size: 14px;
  }
 
  a:hover {
-    color: var(--link-hover-color);
+    color:black ;
     text-decoration: underline;
  }
 
  .navigator-selected {
-     background: var(--primary-color);
+     /* #ffa500; Mouse hover color after click Orange.*/
+     background:#027368
  }
 
  .wrapper {
@@ -48,7 +33,7 @@ ul {
      left: 400px;
      right: 0;
      margin-right:9px;
-     overflow: auto;
+     overflow: auto;/*imortant*/
  }
 
  .navigator-root {
@@ -62,33 +47,33 @@ ul {
 
  .suite {
      margin: -5px 10px 10px 5px;
-     background-color: var(--background-color);
+     background-color: whitesmoke ;/*Colour of the left bside box*/
  }
 
  .suite-name {
      font-size: 24px;
-     font-family: var(--font-family-sans);
-     color: var(--header-text-color);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;/*All TEST SUITE*/
+     color: white;
  }
 
  .main-panel-header {
      padding: 5px;
-     background-color: var(--primary-color);
-     font-family: var(--font-family-sans);
-     color: var(--header-text-color);
+     background-color: #027368; /*afeeee*/;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+     color:white;
      font-size: 18px;
  }
 
  .main-panel-content {
      padding: 5px;
      margin-bottom: 10px;
-     background-color: var(--panel-background-color);
+     background-color: #CCD0D1; /*d0ffff*/; /*Belongs to backGround of rightSide boxes*/
  }
 
  .rounded-window {
      border-style: dotted;
-     border-width: 1px;
-     background-color: var(--background-color);
+     border-width: 1px;/*Border of left Side box*/
+     background-color: whitesmoke;
      border-radius: 10px;
  }
 
@@ -97,11 +82,11 @@ ul {
      border-top-left-radius: 10px 10px;
      border-style: solid;
      border-width: 1px;
-     overflow: auto;
+     overflow: auto;/*Top of RightSide box*/
  }
 
  .light-rounded-window-top {
-     background-color: var(--primary-color);
+     background-color: #027368;
      padding-left:120px;
      border-radius: 10px;
 
@@ -110,12 +95,12 @@ ul {
  .rounded-window-bottom {
      border-bottom-right-radius: 10px 10px;
      border-bottom-left-radius: 10px 10px;
-     overflow: auto;
+     overflow: auto;/*Bottom of rightSide box*/
  }
 
  .method-name {
      font-size: 14px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      font-weight: bold;
  }
 
@@ -129,20 +114,20 @@ ul {
 
  .parameters {
      font-size: 14px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
  }
 
  .stack-trace {
      white-space: pre;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      font-size: 12px;
      font-weight: bold;
      margin-top: 0;
-     margin-left: 20px;
+     margin-left: 20px; /*Error Stack Trace Message*/
  }
 
  .testng-xml {
-    font-family: var(--font-family-sans);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
  }
 
  .method-list-content {
@@ -151,14 +136,14 @@ ul {
 
  .navigator-suite-content {
      margin-left: 10px;
-     font: 12px var(--font-family-monospace);
+     font: 12px 'Lucida Grande';
  }
 
  .suite-section-title {
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      font-size: 14px;
      font-weight:bold;
-     background-color: var(--secondary-color);
+     background-color: #8C8887;
      margin-left: -10px;
      margin-top:10px;
      padding:6px;
@@ -166,8 +151,8 @@ ul {
 
  .suite-section-content {
      list-style-image: url(bullet_point.png);
-     background-color: var(--background-color);
-     font-family: var(--font-family-sans);
+     background-color: whitesmoke;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      overflow: hidden;
  }
 
@@ -179,25 +164,22 @@ ul {
      right: 0;
      padding: 5px;
      margin: 0 0 5px 0;
-     background-color: var(--primary-color);
-     font-family: var(--font-family-sans);
+     background-color: #027368;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      font-size: 18px;
-     color: var(--header-text-color);
-     text-align: center;
-     display: flex;
-     align-items: center;
-     justify-content: center;
+     color: #fff;
+     text-align: center;/*Belongs to the Top of Report*//*Status: - Completed*/
  }
 
  .top-banner-title-font {
      font-size: 25px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      padding: 3px;
      float: right;
  }
 
  .test-name {
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      font-size: 16px;
  }
 
@@ -208,7 +190,7 @@ ul {
  }
 
  .test-group {
-     font: 20px var(--font-family-monospace);
+     font: 20px 'Lucida Grande';
      margin: 5px 5px 10px 5px;
      border-width: 0 0 1px 0;
      border-style: solid;
@@ -230,28 +212,28 @@ ul {
 
  .reporter-method-name {
      font-size: 14px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
  }
 
  .reporter-method-output-div {
      padding: 5px;
      margin: 0 0 5px 20px;
      font-size: 12px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      border-width: 0 0 0 1px;
      border-style: solid;
  }
 
  .ignored-class-div {
      font-size: 14px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
  }
 
  .ignored-methods-div {
      padding: 5px;
      margin: 0 0 5px 20px;
      font-size: 12px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      border-width: 0 0 0 1px;
      border-style: solid;
  }
@@ -260,21 +242,21 @@ ul {
     border-radius:2px;
      border-style: solid;
      border-width: 0 0 0 10px;
-     border-color: var(--border-failed-color);
+     border-color: #F20505;
  }
 
  .border-skipped {
      border-radius:2px;
      border-style: solid;
      border-width: 0 0 0 10px;
-     border-color: var(--border-skipped-color);
+     border-color: #F2BE22;
  }
 
  .border-passed {
      border-radius:2px;
      border-style: solid;
      border-width: 0 0 0 10px;
-     border-color: var(--border-passed-color);
+     border-color: #038C73;
  }
 
  .times-div {
@@ -283,7 +265,7 @@ ul {
  }
 
  .suite-total-time {
-     font: 16px var(--font-family-monospace);
+     font: 16px 'Lucida Grande';
  }
 
  .configuration-suite {
@@ -307,8 +289,8 @@ ul {
  }
 
  .chronological-class {
-     background-color: var(--panel-background-color);
-     border-width: 0 0 1px 1px;
+     background-color: #CCD0D1;
+     border-width: 0 0 1px 1px;/*Chronological*/
  }
 
  .method-start {
@@ -318,12 +300,12 @@ ul {
  .chronological-class-name {
      padding: 0 0 0 5px;
      margin-top:5px;
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      color: #008;
  }
 
  .after, .before, .test-method {
-     font-family: var(--font-family-sans);
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
      font-size: 14px;
      margin-top:5px;
  }
@@ -333,11 +315,11 @@ ul {
      margin: 0px 10px 10px 5px;
      padding: 5px;
      border-radius: 10px;
-     background-color: var(--primary-color);
-     color: var(--header-text-color);
+     background-color: #027368;
+     color: white;
      font-weight:bold;
-     font-family: var(--font-family-sans);
-     text-align: center;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+     text-align: center; /*All Suites on top of left box*//*Status: -Completed*/
  }
 
  .collapse-all-icon {
@@ -346,21 +328,17 @@ ul {
  }
  .button{
     position: absolute;
-    right: 20px;
-    background-color: var(--header-text-color);
-    color: var(--primary-color);
-    font-family: var(--font-family-sans);
+    margin-left:500px;
+    margin-top:8px;
+    background-color: white;
+    color:#027368;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight:bold;
-    border-color: var(--primary-color);
+    border-color:#027368;
     border-radius:25px;
     cursor: pointer;
     height:30px;
     width:150px;
     outline: none;
-    transition: all 0.2s ease-in-out;
 }
-.button:hover {
-    width: 180px;
-    height: 45px;
-    margin-top: 1px;
-}
+/*Author: - Akhil Gullapalli*/

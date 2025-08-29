@@ -1,52 +1,76 @@
-// This is the file where we handle the switching of the Themes.
-/* Author: - Akhil Gullapalli */
+window.onload = function () {
+  let cookies = document.cookie;
+  let cookieValue = cookies.split('=');
+  if (cookieValue[1] === 'null' || localStorage.getItem('Theme') === 'null') {
+    document.getElementById('retro').setAttribute('disabled', 'false');
+  } else if (cookieValue[1] === 'Switch Ultra Theme' ||
+      localStorage.getItem('Theme') === 'Switch Ultra Theme') {
+    document.getElementById('button').innerText = "Switch Retro Theme";
+    document.getElementById('retro').setAttribute('disabled', 'false');
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Constants
-    const THEME_STORAGE_KEY = 'Theme';
-    const RETRO_THEME_VALUE = 'Switch Retro Theme';
-    const ULTRA_THEME_VALUE = 'Switch Ultra Theme';
-    const button = document.getElementById('button');
-    const retroSheet = document.getElementById('retro');
-    const ultraSheet = document.getElementById('ultra');
+  } else if (cookieValue[1] === 'Switch Retro Theme' ||
+      localStorage.getItem('Theme') === 'Switch Retro Theme') {
+    if (cookieValue[1] === 'Switch Ultra Theme' ||
+        localStorage.getItem('Theme') === 'Switch Ultra Theme') {
+      document.getElementById('button').innerText = "Switch Retro Theme";
+      document.getElementById('retro').setAttribute('disabled', 'false');
 
-    if (!button || !retroSheet || !ultraSheet) {
-        console.error('Required theme elements not found in the DOM.');
-        return;
+      document.getElementById('button').innerText = "Switch Ultra Theme";
+      document.getElementById('retro').removeAttribute('disabled');
+      document.getElementById('ultra').setAttribute('disabled', 'false');
+      localStorage.setItem('Theme', select);
+
+    } else if (select === 'Switch Ultra Theme') {
+      document.getElementById('button').innerText = "Switch Retro Theme";
+      document.getElementById('ultra').removeAttribute('disabled');
+      document.getElementById('retro').setAttribute('disabled', 'false');
+      localStorage.setItem('Theme', select);
     }
+  } else if (cookieValue[1] === 'Switch Retro Theme' ||
+      localStorage.getItem('Theme') === 'Switch Retro Theme') {
+    document.getElementById('button').innerText = "Switch Ultra Theme";
+    document.getElementById('ultra').setAttribute('disabled', 'false');
+  }
+}
+document.getElementById('button').onclick = function () {
+  let select = document.getElementById('button').innerText;
+  if (select === 'Switch Retro Theme') {
+    let d = new Date();
+    days = 365;
+    d.setTime(+d + (days * 86400000)); //24 * 60 * 60 * 1000
+    document.cookie = "Theme =" + select + "; expires=" + d.toGMTString() + ";";
+    document.getElementById('button').innerText = "Switch Ultra Theme";
+    document.getElementById('retro').removeAttribute('disabled');
+    document.getElementById('ultra').setAttribute('disabled', 'false');
+    localStorage.setItem('Theme', select);
 
-    /**
-     * Applies the selected theme to the page.
-     * @param {string} theme - The theme to apply.
-     */
-    function applyTheme(theme) {
-        if (theme === RETRO_THEME_VALUE) {
-            button.innerText = ULTRA_THEME_VALUE;
-            retroSheet.removeAttribute('disabled');
-            ultraSheet.setAttribute('disabled', 'true');
-        } else { // Default to Ultra theme
-            button.innerText = RETRO_THEME_VALUE;
-            retroSheet.setAttribute('disabled', 'true');
-            ultraSheet.removeAttribute('disabled');
-        }
-    }
+  } else if (select === 'Switch Ultra Theme') {
+    let d = new Date();
+    days = 365;
+    d.setTime(+d + (days * 86400000)); //24 * 60 * 60 * 1000
+    document.cookie = "Theme =" + select + "; expires=" + d.toGMTString() + ";";
+    document.getElementById('button').innerText = "Switch Retro Theme";
+    document.getElementById('ultra').removeAttribute('disabled');
+    document.getElementById('retro').setAttribute('disabled', 'false');
+    localStorage.setItem('Theme', select);
+  }
+}
+//Function to mouse hovering affect.
+document.getElementById('button').onmouseover = function () {
+  document.getElementById('button').style.borderRadius = "25px";
+  document.getElementById('button').style.width = "180px";
+  document.getElementById('button').style.height = "45px";
+  document.getElementById('button').style.marginTop = "1px";
 
-    /**
-     * Toggles the theme, saves the choice to localStorage, and applies it.
-     */
-    function toggleTheme() {
-        const currentTheme = localStorage.getItem(THEME_STORAGE_KEY);
-        // If current is Ultra or null, switch to Retro. Otherwise, switch to Ultra.
-        const newTheme = (currentTheme === ULTRA_THEME_VALUE || !currentTheme) ? RETRO_THEME_VALUE : ULTRA_THEME_VALUE;
-        
-        localStorage.setItem(THEME_STORAGE_KEY, newTheme);
-        applyTheme(newTheme);
-    }
+}
+//Function to mouse out affect
+document.getElementById('button').onmouseout = function () {
+  document.getElementById('button').style.borderRadius = "25px";
+  document.getElementById('button').style.width = "150px";
+  document.getElementById('button').style.height = "30px";
+  document.getElementById('button').style.marginTop = "8px";
 
-    // Initialize theme on page load
-    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY) || ULTRA_THEME_VALUE;
-    applyTheme(savedTheme);
+}
 
-    // Attach event listener
-    button.addEventListener('click', toggleTheme);
-});
+//This is the file where we handle the switching of the Themes.
+/*Author:- Akhil Gullapalli*/

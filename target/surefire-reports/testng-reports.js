@@ -1,28 +1,28 @@
 $(document).ready(function() {
-    // Use event delegation for all navigator links
-    $(document).on('click', 'a.navigator-link', function() {
-        var panelName = $(this).attr('panel-name');
+    $('a.navigator-link').on("click", function() {
+        // Extract the panel for this link
+        var panel = getPanelName($(this));
+
+        // Mark this link as currently selected
         $('.navigator-link').parent().removeClass('navigator-selected');
         $(this).parent().addClass('navigator-selected');
-        showPanel(panelName);
+
+        showPanel(panel);
     });
 
     installMethodHandlers('failed');
     installMethodHandlers('skipped');
     installMethodHandlers('passed', true); // hide passed methods by default
 
-    // Use event delegation for method links
-    $(document).on('click', 'a.method', function(e) {
-        e.preventDefault();
+    $('a.method').on("click", function() {
         showMethod($(this));
+        return false;
     });
 
     // Hide all the panels and display the first one (do this last
     // to make sure the click() will invoke the listeners)
     $('.panel').hide();
-    if ($('.navigator-link').length) {
-        $('.navigator-link').first().trigger("click");
-    }
+    $('.navigator-link').first().trigger("click");
 
     // Collapse/expand the suites
     $('a.collapse-all-link').on("click", function() {
@@ -37,31 +37,51 @@ $(document).ready(function() {
 
 // The handlers that take care of showing/hiding the methods
 function installMethodHandlers(name, hide) {
-    var showMethodsLink = $(`.show-methods.${name}`);
-    var hideMethodsLink = $(`.hide-methods.${name}`);
+    function getContent(t) {
+    return $('.method-list-content.' + name + "." + t.attr('panel-name'));
+    }
 
-    hideMethodsLink.on("click", function() {
-        var panelName = $(this).attr('panel-name');
-        $(`.method-list-content.${name}.${panelName}`).hide();
-        $(`.hide-methods.${name}.${panelName}`).hide();
-        $(`.show-methods.${name}.${panelName}`).show();
-        $(`.${panelName}-class-${name}`).hide();
+    function getHideLink(t, name) {
+        var s = 'a.hide-methods.' + name + "." + t.attr('panel-name');
+        return $(s);
+    }
+
+    function getShowLink(t, name) {
+        return $('a.show-methods.' + name + "." + t.attr('panel-name'));
+    }
+
+    function getMethodPanelClassSel(element, name) {
+        var panelName = getPanelName(element);
+    var sel = '.' + panelName + "-class-" + name;
+        return $(sel);
+    }
+
+    $('a.hide-methods.' + name).on("click", function() {
+        var w = getContent($(this));
+        w.hide();
+        getHideLink($(this), name).hide();
+        getShowLink($(this), name).show();
+    getMethodPanelClassSel($(this), name).hide();
     });
 
-    showMethodsLink.on("click", function() {
-        var panelName = $(this).attr('panel-name');
-        $(`.method-list-content.${name}.${panelName}`).show();
-        $(`.hide-methods.${name}.${panelName}`).show();
-        $(`.show-methods.${name}.${panelName}`).hide();
-        showPanel(panelName);
-        $(`.${panelName}-class-${name}`).show();
+    $('a.show-methods.' + name).on("click", function() {
+        var w = getContent($(this));
+        w.show();
+        getHideLink($(this), name).show();
+        getShowLink($(this), name).hide();
+    showPanel(getPanelName($(this)));
+    getMethodPanelClassSel($(this), name).show();
     });
 
     if (hide) {
-        hideMethodsLink.trigger("click");
+        $('a.hide-methods.' + name).trigger("click");
     } else {
-        showMethodsLink.trigger("click");
+        $('a.show-methods.' + name).trigger("click");
     }
+}
+
+function getHashForMethod(element) {
+    return element.attr('hash-for-method');
 }
 
 function getPanelName(element) {
@@ -70,7 +90,7 @@ function getPanelName(element) {
 
 function showPanel(panelName) {
     $('.panel').hide();
-    var panel = $(`.panel[panel-name="${panelName}"]`);
+    var panel = $('.panel[panel-name="' + panelName + '"]');
     panel.show();
 }
 
@@ -78,13 +98,11 @@ function showMethod(element) {
     var hashTag = getHashForMethod(element);
     var panelName = getPanelName(element);
     showPanel(panelName);
-    // Use modern history API to avoid page jump and full reload
-    history.pushState(null, null, '#' + hashTag);
-    // Use scrollIntoView for smooth and reliable scrolling
-    var method = document.getElementById(hashTag);
-    if (method) {
-        method.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    var current = document.location.href;
+    var base = current.substring(0, current.indexOf('#'))
+    document.location.href = base + '#' + hashTag;
+    var newPosition = $(document).scrollTop() - 65;
+    $(document).scrollTop(newPosition);
 }
 
 function drawTable() {
@@ -101,8 +119,4 @@ function drawTable() {
             showRowNumber : false
         });
     }
-}
-
-function getHashForMethod(element) {
-    return element.attr('hash-for-method');
 }
